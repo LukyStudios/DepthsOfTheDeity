@@ -1,0 +1,45 @@
+[gd_scene load_steps=8 format=3 uid="uid://i5sd0idntub"]
+
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_3g5hj"]
+[ext_resource type="PackedScene" uid="uid://bptxrgvpyor2r" path="res://scenes/bullet.tscn" id="2_lc6jl"]
+[ext_resource type="Texture2D" uid="uid://be8ny3nvunsvr" path="res://assets/player.png" id="3_2b44m"]
+[ext_resource type="Texture2D" uid="uid://bjeic23ans2sk" path="res://assets/wing.png" id="4_67tqv"]
+[ext_resource type="Texture2D" uid="uid://b3pt1hnvet85g" path="res://assets/bow.png" id="5_rpwwj"]
+[ext_resource type="AudioStream" uid="uid://dull80i6n5w7a" path="res://music/scream.mp3" id="6_7g66o"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wj07r"]
+radius = 4.0
+height = 16.0
+
+[node name="Player2D" type="CharacterBody2D" groups=["Player"]]
+collision_layer = 8
+collision_mask = 8
+script = ExtResource("1_3g5hj")
+bulletScene = ExtResource("2_lc6jl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_wj07r")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("3_2b44m")
+
+[node name="Bow2D" type="Sprite2D" parent="Sprite2D"]
+position = Vector2(4, 2)
+texture = ExtResource("5_rpwwj")
+
+[node name="Wing2D" type="Sprite2D" parent="Sprite2D"]
+position = Vector2(-1, 2)
+texture = ExtResource("4_67tqv")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.25
+autostart = true
+
+[node name="HitTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_7g66o")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="HitTimer" to="." method="_on_hit_timer_timeout"]

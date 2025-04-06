@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=4 uid="uid://dwbsuth7nmjv2"]
+
+[ext_resource type="TileSet" uid="uid://dyc6xv1u6bvee" path="res://scenes/tileSet.tres" id="1_61y75"]
+[ext_resource type="PackedScene" uid="uid://i5sd0idntub" path="res://scenes/player.tscn" id="2_ht7qg"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAAAABEAAQABAAAAAAABABEAAQABAAAAAAACABEAAQABAAAAAAADABEAAQABAAAAAAAEABEAAQABAAAAAAAFABEAAQABAAAAAAAGABEAAQABAAAAAAAHABEAAQABAAAAAAAIABEAAQABAAAAAAAJABEAAQABAAAAAAD//xEAAQABAAAAAAD+/xEAAQABAAAAAAD9/xEAAQABAAAAAAD8/xEAAQABAAAAAAD7/xEAAQABAAAAAAD6/xEAAQABAAAAAAD5/xEAAQABAAAAAAD4/xEAAQABAAAAAAD3/xEAAQABAAAAAAD2/xEAAQABAAAAAAA=")
+tile_set = ExtResource("1_61y75")
+rendering_quadrant_size = 8
+
+[node name="Player2D" parent="." instance=ExtResource("2_ht7qg")]
+position = Vector2(70, 79)

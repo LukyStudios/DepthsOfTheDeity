@@ -1,0 +1,9 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://30wm55qnregn"]
+
+[ext_resource type="FontFile" uid="uid://stjftufm7iva" path="res://fonts/Scream When You're Ready to Die.ttf" id="1_420d2"]
+
+[resource]
+line_spacing = 4.0
+font = ExtResource("1_420d2")
+font_size = 8
+shadow_size = 0

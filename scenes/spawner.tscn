@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://co8balb7le1x1"]
+
+[ext_resource type="Script" path="res://scripts/spawner.gd" id="1_bvk2p"]
+[ext_resource type="Texture2D" uid="uid://clqd4qvjqpfb3" path="res://assets/spawner.png" id="1_p4tny"]
+[ext_resource type="PackedScene" uid="uid://c3qtp2vepp5g1" path="res://scenes/enemy.tscn" id="2_ytb3o"]
+[ext_resource type="PackedScene" uid="uid://bxdu5yug8vrol" path="res://scenes/health.tscn" id="3_p8o40"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_eoyje"]
+radius = 5.0
+height = 12.0
+
+[node name="Spawner" type="Area2D" groups=["Spawner"]]
+collision_layer = 12
+collision_mask = 12
+script = ExtResource("1_bvk2p")
+enemyScene = ExtResource("2_ytb3o")
+collectableScene = ExtResource("3_p8o40")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_p4tny")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -1)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_eoyje")
+
+[node name="SpawnPoint2D" type="Node2D" parent="."]
+position = Vector2(0, 6)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_shape_entered" from="." to="." method="_on_body_shape_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
